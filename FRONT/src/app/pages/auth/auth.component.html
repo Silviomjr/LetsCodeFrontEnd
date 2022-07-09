@@ -1,0 +1,49 @@
+
+
+<mat-drawer-container class="example-container h-full">
+  <mat-drawer class="w-6/12 bg-black" mode="side" opened>
+    <div class="flex items-center justify-center w-full h-full">
+      <span class="text-slate-300">teste</span>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="w-6/12 bg-slate-400">
+    <form [formGroup]="form" class="flex items-center justify-center w-full h-full flex-col">
+      <span class="mb-4">Faça seu login:</span>
+      <mat-form-field class="w-9/12 mb-4" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input autocomplete="off" type="email" matInput formControlName="login" placeholder="seuemail@email.com">
+        <mat-error *ngIf="form.controls['login'].hasError('minlength') && !form.controls['login'].hasError('required')">
+          Insira um usário com válido!
+        </mat-error>
+        <mat-error *ngIf="form.controls['login'].hasError('required')">
+          O usuário é obrigatório!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-9/12 mb-4"  appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input autocomplete="off" type="password" matInput formControlName="password" placeholder="Insira sua senha">
+        <mat-error *ngIf="form.controls['password'].hasError('minlength') && !form.controls['login'].hasError('password')">
+          Senha deve ter no mínimo 6 caracteres!
+        </mat-error>
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+          Senha obrigatória!
+        </mat-error>
+      </mat-form-field>
+      <mat-error *ngIf="!validUser && triggerUserError">
+        Usuário e/ou senha inválidos!
+      </mat-error>
+      <button class="bg-slate-100 w-40" mat-button (click)="loginAction()">
+        <span *ngIf="!loading; else elseBlock">
+          Login
+        </span>
+
+        <ng-template class="flex justify-center" #elseBlock>
+          <mat-spinner></mat-spinner>
+        </ng-template>
+      </button>
+    </form>
+    
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

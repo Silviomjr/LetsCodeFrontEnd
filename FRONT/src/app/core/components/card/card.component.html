@@ -1,0 +1,108 @@
+
+<div *ngIf="!editting">
+  <div class="w-full flex items-center justify-center p-4">
+    <span class="text-slate-100 font-bold text-2xl">
+      {{title}}
+    </span>
+  </div>
+  <div *ngIf="(!newCard && data.length) ">
+    <mat-card class="h-80" data>
+      <mat-card-header class="h-1/5 relative">
+        <mat-card-title>{{ form.controls['titulo'].value }}</mat-card-title>
+        <button class="absolute right-0 top-0 z-10" (click)="edit()"><mat-icon class="z-0">drive_file_rename_outline</mat-icon></button>
+      </mat-card-header>
+      <mat-card-content class="h-3/5">
+        <textarea class="h-full w-full resize-none" disabled>
+          {{ form.controls['conteudo'].value }}
+        </textarea>
+      </mat-card-content>
+      <mat-card-actions class="custom-mat-card-action h-1/5">
+        <button class="custom-add-button z-10" mat-button><mat-icon class="text-slate-400 z-0" (click)="back()">arrow_back_ios</mat-icon></button>
+        <button class="custom-add-button z-10" mat-button><mat-icon class="text-slate-400 z-0" (click)="remove(data[currentIndex]?.id)">delete</mat-icon></button>
+        <button class="custom-add-button z-10" mat-button><mat-icon class="text-slate-400 z-0" (click)="next()">arrow_forward_ios</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="!newCard && !data.length ">
+    <mat-card class="h-80">
+      <mat-card-header class="h-1/5 relative">
+        <mat-card-title>Não há tarefas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="h-3/5">
+        <textarea class="h-full w-full resize-none" disabled>
+          
+        </textarea>
+      </mat-card-content>
+      <mat-card-actions class="custom-mat-card-action h-1/5">
+        
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
+  
+  <div *ngIf="(newCard && !data.length)">
+    <form [formGroup]="form">
+      <mat-card class="h-80">
+        
+        <input class="w-full h-1/5 text-2xl text-center" matInput placeholder="Novo título" formControlName="titulo">
+        
+        
+          <textarea matInput formControlName="conteudo" class="h-3/6 w-full resize-none text-2xl text-center" placeholder="Insira sua task aqui."></textarea>
+          <mat-select formControlName="lista" [value]="form.controls['lista']">
+            <mat-option value="ToDo">
+              To Do
+            </mat-option>
+            <mat-option value="Doing">
+              Doing
+            </mat-option>
+            <mat-option value="Done">
+              Done
+            </mat-option>
+          </mat-select>
+          
+          <!-- <input class="w-full h-1/5 text-2xl text-center" matInput placeholder="Qual o status da tarefa?" formControlName="lista"> -->
+        
+        <mat-card-actions class="custom-mat-card-action-new h-1/5">
+          <button class="custom-add-button" mat-button><mat-icon class="text-slate-400" (click)="addNewTask()" >add</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="editting">
+  <div class="w-full flex items-center justify-center p-4">
+    <span class="text-slate-100 font-bold text-2xl">
+      {{title}}
+    </span>
+  </div>
+  <div>
+    <form [formGroup]="form">
+      <mat-card class="h-80">
+        
+        <input class="w-full h-1/5 text-2xl text-center" matInput placeholder="Novo título" formControlName="titulo" [value]="form.controls['titulo']">
+        
+        
+          <textarea matInput formControlName="conteudo" class="h-3/6 w-full resize-none text-2xl text-center" placeholder="Insira sua task aqui." [value]="form.controls['conteudo']"></textarea>
+          <mat-select formControlName="lista" [value]="form.controls['lista']">
+            <mat-option value="ToDo">
+              To Do
+            </mat-option>
+            <mat-option value="Doing">
+              Doing
+            </mat-option>
+            <mat-option value="Done">
+              Done
+            </mat-option>
+          </mat-select>
+          
+          <!-- <input class="w-full h-1/5 text-2xl text-center" matInput placeholder="Qual o status da tarefa?" formControlName="lista"> -->
+        
+        <mat-card-actions class="custom-mat-card-action-new h-1/5">
+          <button class="custom-add-button" mat-button><mat-icon class="text-slate-400" (click)="editTask(data[currentIndex]?.id)" >add</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
+

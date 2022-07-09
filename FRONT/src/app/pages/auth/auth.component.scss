@@ -1,0 +1,13 @@
+::ng-deep {
+  .mat-button-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    align-content: center;
+    align-items: center;
+    mat-spinner {
+      transform: scale(0.2);
+    }
+  }
+}
+

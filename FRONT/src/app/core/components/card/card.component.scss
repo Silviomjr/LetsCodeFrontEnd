@@ -1,0 +1,38 @@
+::ng-deep {
+  mat-card-actions.custom-mat-card-action-new {
+    display: flex;
+    justify-content: center;
+  }
+
+  mat-card-actions.custom-mat-card-action {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mat-card-header-text {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .mat-button.custom-add-button {
+    background-color: black;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0 !important;
+    min-width: 0;
+    width: 2rem;
+    height: 2rem;
+
+    .mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+
+<div class="flex flex-wrap gap-4 m-8">
+  <app-card class="grow max-w-sm mx-auto" (refreshBoard)="refreshBoard($event)" [newCard]="true" [title]="'Novo'"></app-card>
+  <app-card class="grow max-w-md mx-auto" (refreshBoard)="refreshBoard($event)" [data]="toDoCards" [title]="'To Do'"></app-card>
+  <app-card class="grow max-w-md mx-auto" (refreshBoard)="refreshBoard($event)" [data]="doingCards" [title]="'Doing'"></app-card>
+  <app-card class="grow max-w-md mx-auto" (refreshBoard)="refreshBoard($event)" [data]="doneCards" [title]="'Done'"></app-card>
+</div>

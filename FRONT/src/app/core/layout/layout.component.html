@@ -1,0 +1,17 @@
+<mat-toolbar class="flex h-16 mb-8 p-8 justify-between items-center text-white bg-slate-400 w-full">
+  
+    <p class="text-3xl m-0">Let's code Kanban</p>
+    <button mat-icon-button class="h-16 w-16 rounded-md" [matMenuTriggerFor]="menu">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="!isLoggedIn" (click)="login()">Login</button>
+      <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    </mat-menu>
+  
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+<div class="fixed bottom-0 left-0 w-screen h-12 bg-slate-400">
+  <span class="flex items-center justify-center text-xl text-center text-black m-0 h-full">Desenvolvido por Silvio - 2022</span>
+</div>
