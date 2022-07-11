@@ -12,7 +12,6 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    // component: AuthComponent,
     loadChildren: () => import('src/app/pages/auth/auth.module').then(m => m.AuthModule),
   },
   {
@@ -20,6 +19,11 @@ export const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => import('src/app/pages/kanban-board/kanban-board.module').then(m => m.KanbanBoardModule),
     canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'not-found',
+    component: LayoutComponent,
+    loadChildren: () => import('src/app/pages/not-found/not-found.module').then(m => m.NotFoundModule),
   },
   {
     path: '',

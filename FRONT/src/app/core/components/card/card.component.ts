@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input() title: string = '';
   @Input("data")
   set loadData(value: Kanban[]) {
-    if(value) {
+    if(value && value.length > 0) {
       this.data = value;
       this.setFormValue();
     } 

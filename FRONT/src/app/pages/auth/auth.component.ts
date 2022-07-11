@@ -12,6 +12,7 @@ export class AuthComponent implements OnInit {
   public loading: boolean = false;
   public validUser: boolean = false;
   public triggerUserError: boolean = false;
+  public authError: boolean = false;
 
   public form = new FormGroup({
     login: new FormControl("", Validators.compose([
@@ -39,12 +40,15 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.form.getRawValue()).subscribe((res: any) => {
       if(res) {
         this.triggerUserError = false;
+        this.authError = false;
         this.router.navigateByUrl('/kanban-board')
         return;
       }
 
       this.triggerUserError = true
       return
+    }, err => {
+      this.authError = true;
     })
 
     

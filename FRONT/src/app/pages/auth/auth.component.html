@@ -2,16 +2,17 @@
 
 <mat-drawer-container class="example-container h-full">
   <mat-drawer class="w-6/12 bg-black" mode="side" opened>
-    <div class="flex items-center justify-center w-full h-full">
-      <span class="text-slate-300">teste</span>
+    <div class="flex items-center justify-center w-full h-full flex-col">
+      <span class="text-slate-300"><img class="w-6/12 mx-auto mb-8" src="https://static.kanbantool.com/kanban-guide/ud/kanban_board_cesn.png" alt="kanban-image"></span>
+      <p class="text-slate-200 text-2xl">Let's Code - Desafio do Kanban!</p>
     </div>
   </mat-drawer>
   <mat-drawer-content class="w-6/12 bg-slate-400">
     <form [formGroup]="form" class="flex items-center justify-center w-full h-full flex-col">
       <span class="mb-4">Faça seu login:</span>
-      <mat-form-field class="w-9/12 mb-4" appearance="fill">
+      <mat-form-field class="w-9/12 mb-4" appearance="fill" #login>
         <mat-label>E-mail</mat-label>
-        <input autocomplete="off" type="email" matInput formControlName="login" placeholder="seuemail@email.com">
+        <input #loginAutoComplete autocomplete="off" type="email" matInput formControlName="login" placeholder="seuemail@email.com">
         <mat-error *ngIf="form.controls['login'].hasError('minlength') && !form.controls['login'].hasError('required')">
           Insira um usário com válido!
         </mat-error>
@@ -31,6 +32,9 @@
       </mat-form-field>
       <mat-error *ngIf="!validUser && triggerUserError">
         Usuário e/ou senha inválidos!
+      </mat-error>
+      <mat-error *ngIf="!validUser && authError">
+        Ocorreu um erro na autenticação, tente novamente mais tarde.
       </mat-error>
       <button class="bg-slate-100 w-40" mat-button (click)="loginAction()">
         <span *ngIf="!loading; else elseBlock">

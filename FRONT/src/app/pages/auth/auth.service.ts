@@ -25,11 +25,6 @@ export class AuthService {
       }))
   }
 
-  isLoggedId(): Observable<any> {
-    const tempVar = new Observable()
-    return tempVar;
-  }
-
   public createAccessToken(accessToken: string) {
     localStorage.setItem("accessTokenLetsCode", accessToken);
   }

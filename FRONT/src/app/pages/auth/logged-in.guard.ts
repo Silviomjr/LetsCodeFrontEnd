@@ -5,18 +5,12 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
-  private loggedIn = false;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.isLoggedId().subscribe((loggedId: boolean) => {
-      this.loggedIn = loggedId;
-    });
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const user = this.authService.getUser();
-    console.log('user guard', user)
 
     if (!user) {
       this.router.navigateByUrl('/login');
